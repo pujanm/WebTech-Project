@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+    <style media="screen">
+      .container {
+        margin: 50px auto;
+      }
+    </style>
+</head>
+{% extends 'base.html' %}
+{% block products %}
+<div class="animated zoomInRight">
+  <div class="container">
+      <a href="/products/productsList" class="waves-effect waves-light btn modal-trigger">Go Back</a>
+      {% for i in products %}
+      <div class="col s12 m7">
+       <div class="card horizontal">
+         <div class="card-image">
+           <a href="/products/productsList/{{ i.id }}/">
+             <img src="/{{ i.image }}" alt="" style="width:100px;">
+           </a>
+         </div>
+         <div class="card-stacked">
+           <div class="card-content">
+             <p>{{ i.title }}</p><br>
+             <p>Price: {{ i.price }}</p><br>
+           </div>
+           {% if user.is_authenticated %}
+             <div class="card-action">
+               <a href="/products/productsList/{{ i.id }}/">Details</a>
+             </div>
+           {% else %}
+             <div class="card-action">
+               <a href="/login">Details</a>
+             </div>
+           {% endif %}
+         </div>
+       </div>
+     </div>
+     {% endfor %}
+  </div>
+</div>
+<script type="text/javascript">
+
+</script>
+{% endblock %}

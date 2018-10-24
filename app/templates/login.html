@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+    <style media="screen">
+
+    </style>
+</head>
+{% extends 'base.html' %}
+{% block products %}
+  <div class="animated swing">
+    <div class="section container">
+      <div class="row">
+        <div class="col s12 m6 offset-m3">
+          <div class="card login-wrapper">
+            <div class="card-content">
+
+              <form method="post" id="create_customer" accept-charset="UTF-8">
+                {% csrf_token %}
+                <input name="form_type" value="login" type="hidden"><input name="utf8" value="✓" type="hidden">
+                <h4 class="center">Login</h4>
+
+                <div class="input-field">
+                  <label for="username">
+                    Username
+                  </label>
+                  <input name="username" id="username" class="" value="" spellcheck="false" autocomplete="off" autocapitalize="off" type="text">
+                </div>
+
+                <div class="input-field">
+                  <label for="CreatePassword">
+                    Password
+                  </label>
+                  <input name="password" id="CreatePassword" class="" type="password">
+                </div>
+                <p style="color: red">{{ error }}</p><br>
+                <p>
+                  <input value="Login" class="btn-large z-depth-1" type="submit">
+                </p>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
